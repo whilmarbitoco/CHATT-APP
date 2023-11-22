@@ -1,25 +1,30 @@
 module.exports = class User {
   constructor() {
-    this.locals = {
-      name: "whilmar",
-      age: 18,
-      course: "BSIT"
-    };
+    this.locals = [
+      {
+        id: 1,
+        sender: "me",
+        message: "hello world"
+      },
+      {
+        id: 2,
+        sender: "john",
+        message: "hello from john"
+      },
+    ];
   }
 
-  getUser() {
+  getMsg() {
     return this.locals;
   }
 
-  setName(name) {
-    this.locals.name = name;
-  }
-
-  setAge(age) {
-    this.locals.age = age;
-  }
-
-  setCourse(course) {
-    this.locals.course = course;
+  addMsg(msg) {
+    this.locals.push(
+      {
+        id: this.locals.length + 1,
+        sender: "me",
+        message: msg
+      },
+    );
   }
 }
