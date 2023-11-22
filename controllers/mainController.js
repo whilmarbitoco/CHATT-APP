@@ -7,6 +7,7 @@ exports.homepage = (req, res) => {
 
   
 exports.addMsg = (req, res) => {
-  user.addMsg(req.body.message);
-  res.redirect("/");
+ user.sendMsg(req.body.message)
+ res.redirect("/");
+ 
 };

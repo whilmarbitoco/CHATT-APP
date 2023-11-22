@@ -1,30 +1,32 @@
+const ask = require('../config/ai.js')
+
 module.exports = class User {
   constructor() {
-    this.locals = [
-      {
-        id: 1,
-        sender: "me",
-        message: "hello world"
-      },
-      {
-        id: 2,
-        sender: "john",
-        message: "hello from john"
-      },
-    ];
+    this.locals = [];
   }
 
   getMsg() {
     return this.locals;
   }
 
-  addMsg(msg) {
+  async sendMsg(msg) {
     this.locals.push(
       {
         id: this.locals.length + 1,
         sender: "me",
         message: msg
-      },
-    );
+      });
+    const response = await ask(msg);
+
+
+      this.locals.push(
+      {
+        id: this.locals.length + 1,
+        sender: "ai",
+        message: response
+      });
+
+ 
+    
   }
 }

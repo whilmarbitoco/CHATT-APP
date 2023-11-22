@@ -7,21 +7,28 @@
   <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 <body>
-
-<div class="chatroom">
-  <div class="chats">
-    <% messages.forEach(msg => { %>
-      <div class="chat <%= msg.sender === 'me' ? 'me' : '' %>">
-        <p><%= msg.message %></p>
+  
+  <div class="container">
+    <div class="card">
+      
+      <div class="chat-header">Scylla</div>
+      
+        <div class="chat-window">
+          <ul class="message-list">
+            <% messages.forEach(msg => {%>
+           <li class="msg <%= msg.sender === 'me' ? 'me' : '' %>"> 
+             <%= msg.message %> 
+           </li>
+            <% }) %>
+          </ul>
+        </div>
+      
+        <form class="chat-input" method="post" action="/">
+            <input type="text" class="message-input" name="message" placeholder="Type your message here">
+            <button class="send-button">Send</button>
+        </form>
       </div>
-    <% }) %>
   </div>
-
-  <form method='post' action='/'>
-    <input type="text" name="message" placeholder="Type your message" required>
-    <button type="submit">Send</button>
-  </form>
-</div>
 
 </body>
 </html>
